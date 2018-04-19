@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="hu.zeletrik.a5exercisesbodytransform.MainActivity"
+    android:background="@color/colorPrimaryLight">
+
+<android.support.design.widget.CoordinatorLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="70dp">
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/backgroundLayout"
+        android:layout_marginBottom="40dp">
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_height="wrap_content"
+            android:id="@+id/relativeLayout">
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="340dp"
+                android:layout_height="400dp"
+                android:layout_centerInParent="true"
+                android:indeterminate="false"
+                android:max="100"
+                android:progress="0"
+                android:progressDrawable="@drawable/progressbar_drawable"
+                android:secondaryProgress="0" />
+
+            <ImageView
+                android:id="@+id/rectimageCurrent2"
+                android:layout_height="50dp"
+                android:layout_width="150dp"
+                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/rectangle">
+            </ImageView>
+            <TextView
+                android:id="@+id/currentExercise"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/progressBar"
+                android:layout_centerInParent="true"
+                android:text="No task!"
+                android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+        </RelativeLayout>
+
+</RelativeLayout>
+
+
+    <ImageButton
+        android:id="@+id/skipButton"
+        android:background="@drawable/circle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:src="@drawable/skip"
+        android:padding="10dp"
+        android:layout_marginBottom="55dp"
+        android:layout_marginStart="15dp"
+        android:visibility="invisible"/>
+
+    <ImageView
+        android:id="@+id/rectimage"
+        android:layout_height="55dp"
+        android:layout_width="match_parent"
+        android:layout_gravity="bottom|end"
+        android:src="@drawable/rectangle">
+    </ImageView>
+
+    <TextView
+        android:id="@+id/nextExercise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="No next task!"
+        android:layout_gravity="bottom|center"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginBottom="16dp"/>
+
+    <ImageView
+        android:id="@+id/rectimageCurrent"
+        android:layout_height="50dp"
+        android:layout_width="150dp"
+        android:layout_gravity="bottom|center"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="45dp"
+        android:src="@drawable/rectangle">
+    </ImageView>
+    <TextView
+        android:id="@+id/txtProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="55dp"
+        android:text="00:00"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Spinner
+        android:id="@+id/workouts_spinner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:entries="@array/workouts"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="20dp"
+        android:backgroundTint="@color/green_light"
+        android:src="@drawable/run"
+        android:elevation="12dp"
+        android:translationZ="10dp"/>
+
+</android.support.design.widget.CoordinatorLayout>
+
+</android.support.constraint.ConstraintLayout>

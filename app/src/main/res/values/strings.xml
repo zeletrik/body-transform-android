@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">5 Exercises Body Transform</string>
+
+    <string-array name="workouts">
+    <item>Work Out #1</item>
+    <item>Work Out #2</item>
+    </string-array>
+
+
+    <string name="action_settings">Settings</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+</resources>
