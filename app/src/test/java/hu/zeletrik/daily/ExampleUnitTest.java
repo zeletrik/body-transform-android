@@ -1,4 +1,4 @@
-package hu.zeletrik.a5exercisesbodytransform;
+package hu.zeletrik.daily;
 
 import org.junit.Test;
 

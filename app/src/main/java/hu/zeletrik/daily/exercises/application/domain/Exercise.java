@@ -1,4 +1,6 @@
-package hu.zeletrik.a5exercisesbodytransform;
+package hu.zeletrik.daily.exercises.application.domain;
+
+import hu.zeletrik.daily.exercises.application.domain.Exercises;
 
 /**
  * Created by zelena.patrik2 on 2018-04-18.
@@ -6,14 +8,14 @@ package hu.zeletrik.a5exercisesbodytransform;
 
 public class Exercise {
 
-    private String exercise;
+    private Exercises exercise;
     private Long time;
 
-    public String getExercise() {
+    public Exercises getExercise() {
         return exercise;
     }
 
-    public void setExercise(String exercise) {
+    public void setExercise(Exercises exercise) {
         this.exercise = exercise;
     }
 
@@ -25,7 +27,7 @@ public class Exercise {
         this.time = time;
     }
 
-    public Exercise(String exercise, Long time) {
+    public Exercise(Exercises exercise, Long time) {
         this.exercise = exercise;
         this.time = time;
     }
