@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Daily 10 minute</string>
+    <string name="app_name">Daily Exercises</string>
 
     <string-array name="workouts">
     <item>Work Out #1</item>
