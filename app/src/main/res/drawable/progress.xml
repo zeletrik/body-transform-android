@@ -6,7 +6,7 @@
     android:pivotY="50%"
     android:toDegrees="270"
     android:innerRadiusRatio="3.0"
-    android:thickness="22dp"
+    android:thickness="10dp"
     android:useLevel="true">
 
     <solid android:color="@color/colorPrimaryDark" />

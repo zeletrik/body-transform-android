@@ -23,6 +23,8 @@ import android.widget.TextView;
 
 import com.google.common.collect.ImmutableList;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.List;
 
 import hu.zeletrik.daily.exercises.R;
@@ -94,7 +96,7 @@ public class MainFragment extends Fragment {
 
     private void startWorkout(int exerciseIndex) {
 
-        if (exerciseIndex <= exercises.size()) {
+        if (exerciseIndex <= exercises.size() - 1) {
             int currentOrientation = getResources().getConfiguration().orientation;
             if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE) {
                 getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
@@ -115,6 +117,8 @@ public class MainFragment extends Fragment {
                 nextExerciseTime.setText(calucalteTimeString(exercises.get(exerciseIndex + 1).getExercise().getDuration()));
             } else if (exercises.get(exerciseIndex).getExercise() == Exercises.RUN_IN_PLACE) {
                 nextExerciseText.setText("DONE");
+                nextExerciseTime.setText(StringUtils.EMPTY);
+
             }
 
             startCountDown(exercises.get(exerciseIndex).getTime(), exerciseIndex);

@@ -12,6 +12,7 @@
 
     <android.support.design.widget.CoordinatorLayout
         android:id="@+id/coordinatorLayout"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="0dp"
@@ -24,8 +25,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="top|center"
             android:text="Current task"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="42sp" />
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="50sp" />
 
         <TextView
             android:id="@+id/txtProgress"
@@ -37,8 +39,9 @@
             android:layout_gravity="center"
             android:paddingTop="50dp"
             android:text="00:00"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="35sp"
+            android:textColor="@color/colorPrimaryLight"
+            android:textSize="40sp"
+            android:textStyle="bold"
             android:translationZ="@android:dimen/app_icon_size"
             app:layout_anchor="@id/currentExercise"
             app:layout_anchorGravity="bottom|center" />
@@ -56,17 +59,6 @@
             android:rotation="-90"
             app:layout_anchorGravity="center_vertical" />
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="20dp"
-            android:backgroundTint="@color/colorPrimaryDark"
-            android:elevation="12dp"
-            android:src="@drawable/run"
-            android:translationZ="10dp" />
-
         <ImageView
             android:id="@+id/exerciseImage"
             android:layout_width="wrap_content"
@@ -79,13 +71,14 @@
             app:layout_anchorGravity="center_horizontal|center_vertical"
             app:srcCompat="@drawable/heisman_circle_one" />
 
-        <android.support.design.widget.CoordinatorLayout
+        <LinearLayout
+            android:orientation="vertical"
             android:id="@+id/next_background"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="150dp"
-            app:layout_anchor="@id/progressBar"
-            app:layout_anchorGravity="bottom|center_horizontal">
+            android:paddingTop="5dp"
+            android:layout_marginBottom="28dp"
+            android:layout_gravity="bottom" >
 
             <View
                 android:id="@+id/hr"
@@ -97,52 +90,80 @@
                 android:id="@+id/next_task_header"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="top|center"
+                android:layout_gravity="center_horizontal"
                 android:text="Next exercise"
                 android:textAppearance="?android:attr/textAllCaps"
-                android:textSize="30sp"
-                app:layout_anchor="@id/hr"
-                app:layout_anchorGravity="bottom|center_horizontal" />
+                android:textSize="30sp"/>
 
-
-            <TextView
-                android:id="@+id/nextExercise"
-                android:layout_width="wrap_content"
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="70dp"
-                android:text="Burpeeeeeee"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textSize="40sp"
-                app:layout_anchor="@+id/next_task_header"
-                app:layout_anchorGravity="bottom|right" />
+                android:clipToPadding="false"
+                android:paddingLeft="40dp"
+                android:paddingTop="13dp"
+                android:paddingRight="40dp"
+                android:paddingBottom="10dp">
 
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="4dp"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="5dp"
+                    android:paddingRight="16dp"
+                    android:paddingBottom="5dp"
+                    android:translationZ="1.5dp"
+                    android:background="@drawable/item_background">
 
-            <ImageView
-                android:id="@+id/nextExerciseImage"
-                android:layout_width="150dp"
-                android:layout_height="180dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="1000dp"
-                app:layout_anchor="@+id/nextExercise"
-                app:layout_anchorGravity="left|bottom"
-                app:srcCompat="@drawable/heisman_circle_one" />
+                    <ImageView
+                        android:id="@+id/pic"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/heisman_circle_one"
+                        android:paddingStart="15dp" />
 
+                    <TextView
+                        android:id="@+id/nextExercise"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_toRightOf="@+id/pic"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:text="TEST"
+                        android:textSize="30dp"
+                        android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/nextExerciseTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="17dp"
-                android:text="0:00"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textSize="30sp"
-                app:layout_anchor="@+id/nextExercise"
-                app:layout_anchorGravity="bottom|center" />
+                    <TextView
+                        android:id="@+id/nextExerciseTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/nextExercise"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_toRightOf="@+id/pic"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:text="TEST"
+                        android:textSize="25dp" />
+                </RelativeLayout>
+            </LinearLayout>
 
+        </LinearLayout>
 
-
-        </android.support.design.widget.CoordinatorLayout>
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="20dp"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:elevation="12dp"
+            android:src="@drawable/run"
+            android:translationZ="10dp" />
 
     </android.support.design.widget.CoordinatorLayout>
+
+
 
 </android.support.constraint.ConstraintLayout>
