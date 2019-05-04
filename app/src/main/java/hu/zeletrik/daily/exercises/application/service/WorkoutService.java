@@ -6,6 +6,18 @@ import hu.zeletrik.daily.exercises.application.domain.Exercise;
 
 public interface WorkoutService {
 
-    List<Exercise> getExercises();
+    /**
+     * Get the exercises for workout.
+     *
+     * @return {@link Exercise} list
+     */
+    List<Exercise> getWorkoutExercises();
+
+    /**
+     * Get the exercises without duplication.
+     *
+     * @return {@link Exercise} list
+     */
+    List<Exercise> getBaseExercises();
 
 }

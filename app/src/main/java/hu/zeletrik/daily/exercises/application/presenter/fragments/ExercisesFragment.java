@@ -17,7 +17,6 @@ import hu.zeletrik.daily.exercises.application.domain.Exercise;
 import hu.zeletrik.daily.exercises.application.service.WorkoutService;
 import hu.zeletrik.daily.exercises.application.service.impl.WorkoutServiceImpl;
 
-
 public class ExercisesFragment extends Fragment implements ExercisesAdapter.ItemClickListener {
 
     private WorkoutService workoutService;
@@ -28,11 +27,11 @@ public class ExercisesFragment extends Fragment implements ExercisesAdapter.Item
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        workoutService = new WorkoutServiceImpl(getActivity());
+        workoutService = new WorkoutServiceImpl(getContext());
 
         View rootView = inflater.inflate(R.layout.fragment_exercises, container, false);
 
-        List<Exercise> exerciseList = workoutService.getExercises();
+        List<Exercise> exerciseList = workoutService.getBaseExercises();
 
         RecyclerView recyclerView = rootView.findViewById(R.id.exerciseList);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

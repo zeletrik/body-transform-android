@@ -24,7 +24,7 @@ public class WorkoutServiceImpl implements WorkoutService {
     }
 
     @Override
-    public List<Exercise> getExercises() {
+    public List<Exercise> getWorkoutExercises() {
         return ImmutableList.of(
                 createExercisesFrom(Workout.WARM_UP),
                 createExercisesFrom(Workout.HEISMAN),
@@ -37,6 +37,19 @@ public class WorkoutServiceImpl implements WorkoutService {
                 createExercisesFrom(Workout.REST),
                 createExercisesFrom(Workout.LYING_HIP_RISE),
                 createExercisesFrom(Workout.REST),
+                createExercisesFrom(Workout.RUN_IN_PLACE)
+        );
+    }
+    @Override
+    public List<Exercise> getBaseExercises() {
+        return ImmutableList.of(
+                createExercisesFrom(Workout.REST),
+                createExercisesFrom(Workout.WARM_UP),
+                createExercisesFrom(Workout.HEISMAN),
+                createExercisesFrom(Workout.BURPEE),
+                createExercisesFrom(Workout.JUMP_JACK),
+                createExercisesFrom(Workout.MOUNTAIN_CLIMBER),
+                createExercisesFrom(Workout.LYING_HIP_RISE),
                 createExercisesFrom(Workout.RUN_IN_PLACE)
         );
     }

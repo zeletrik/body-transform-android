@@ -49,7 +49,7 @@ public class WorkoutFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         workoutService = new WorkoutServiceImpl(getContext());
 
-        exercises = workoutService.getExercises();
+        exercises = workoutService.getWorkoutExercises();
 
         View rootView = inflater.inflate(R.layout.fragment_workout, container, false);
 
