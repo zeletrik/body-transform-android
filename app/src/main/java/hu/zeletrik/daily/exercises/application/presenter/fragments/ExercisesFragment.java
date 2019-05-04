@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import hu.zeletrik.daily.exercises.R;
 
+
 public class ExercisesFragment extends Fragment {
 
     public ExercisesFragment() {

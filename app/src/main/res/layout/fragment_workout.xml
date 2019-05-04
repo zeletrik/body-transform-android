@@ -69,7 +69,7 @@
             android:contentDescription="Current exercise"
             app:layout_anchor="@+id/progressBar"
             app:layout_anchorGravity="center_horizontal|center_vertical"
-            app:srcCompat="@drawable/heisman_circle_one" />
+            app:srcCompat="@drawable/wo_heisman" />
 
         <LinearLayout
             android:orientation="vertical"
@@ -120,7 +120,7 @@
                         android:layout_width="120dp"
                         android:layout_height="120dp"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/heisman_circle_one"
+                        android:src="@drawable/wo_heisman"
                         android:paddingStart="15dp" />
 
                     <TextView

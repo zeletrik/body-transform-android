@@ -1,6 +1,6 @@
 package hu.zeletrik.daily.exercises.application.domain;
 
-public enum Exercises {
+public enum Workout {
     REST(15000L, "Rest"),
     WARM_UP(30000L, "Warm up"),
     HEISMAN(90000L, "Heisman"),
@@ -21,7 +21,7 @@ public enum Exercises {
         return name;
     }
 
-    Exercises(long duration, String name) {
+    Workout(long duration, String name) {
         this.duration = duration;
         this.name = name;
     }

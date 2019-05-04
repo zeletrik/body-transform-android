@@ -24,7 +24,7 @@
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_centerVertical="true"
-            android:src="@drawable/heisman_circle_one"
+            android:src="@drawable/wo_heisman"
             android:paddingStart="15dp" />
 
         <TextView

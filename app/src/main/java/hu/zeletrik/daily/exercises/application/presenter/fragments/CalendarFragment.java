@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import hu.zeletrik.daily.exercises.R;
 
+
 public class CalendarFragment extends Fragment {
 
     public CalendarFragment() {

@@ -6,10 +6,10 @@ package hu.zeletrik.daily.exercises.application.presenter.fragments;
 
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
-import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,35 +18,24 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.google.common.collect.ImmutableList;
-
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
 
 import hu.zeletrik.daily.exercises.R;
 import hu.zeletrik.daily.exercises.application.domain.Exercise;
-import hu.zeletrik.daily.exercises.application.domain.Exercises;
+import hu.zeletrik.daily.exercises.application.domain.Workout;
+import hu.zeletrik.daily.exercises.application.service.WorkoutService;
+import hu.zeletrik.daily.exercises.application.service.impl.WorkoutServiceImpl;
 
 import static java.util.Objects.nonNull;
+import static java.util.Objects.requireNonNull;
 
 public class WorkoutFragment extends Fragment {
 
-    private final List<Exercise> exercises = ImmutableList.of(
-            new Exercise(Exercises.WARM_UP, Exercises.WARM_UP.getDuration()),
-            new Exercise(Exercises.HEISMAN, Exercises.HEISMAN.getDuration()),
-            new Exercise(Exercises.REST, Exercises.REST.getDuration()),
-            new Exercise(Exercises.BURPEE, Exercises.BURPEE.getDuration()),
-            new Exercise(Exercises.REST, Exercises.REST.getDuration()),
-            new Exercise(Exercises.JUMP_JACK, Exercises.JUMP_JACK.getDuration()),
-            new Exercise(Exercises.REST, Exercises.REST.getDuration()),
-            new Exercise(Exercises.MOUNTAIN_CLIMBER, Exercises.MOUNTAIN_CLIMBER.getDuration()),
-            new Exercise(Exercises.REST, Exercises.REST.getDuration()),
-            new Exercise(Exercises.LYING_HIP_RISE, Exercises.LYING_HIP_RISE.getDuration()),
-            new Exercise(Exercises.REST, Exercises.REST.getDuration()),
-            new Exercise(Exercises.RUN_IN_PLACE, Exercises.RUN_IN_PLACE.getDuration())
-    );
 
+    private WorkoutService workoutService;
+    private List<Exercise> exercises;
     private MediaPlayer mp;
     private TextView progressInfo;
     private TextView currentExerciseText;
@@ -57,7 +46,10 @@ public class WorkoutFragment extends Fragment {
     private CountDownTimer timer;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        workoutService = new WorkoutServiceImpl(getContext());
+
+        exercises = workoutService.getExercises();
 
         View rootView = inflater.inflate(R.layout.fragment_workout, container, false);
 
@@ -79,63 +71,49 @@ public class WorkoutFragment extends Fragment {
         mp.stop();
         if (nonNull(timer)) {
             timer.cancel();
-
         }
         super.onDestroy();
     }
 
 
     private void startWorkout(int exerciseIndex) {
-
+        fixOrientation();
         mp = MediaPlayer.create(getActivity(), R.raw.alarm);
 
         if (exerciseIndex <= exercises.size() - 1) {
-            int currentOrientation = getResources().getConfiguration().orientation;
-            if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE) {
-                getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
-            } else {
-                getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
-            }
-
             progressBar.setProgress(0);
-            exerciseImage.setImageDrawable(getDrawable(exercises.get(exerciseIndex)));
+            exerciseImage.setImageDrawable(exercises.get(exerciseIndex).getIcon());
             currentExerciseText.setText(exercises.get(exerciseIndex).getExercise().getName());
-
-            if (exercises.get(exerciseIndex).getExercise() != Exercises.REST && exercises.get(exerciseIndex).getExercise() != Exercises.RUN_IN_PLACE) {
-                nextExerciseText.setText(exercises.get(exerciseIndex + 2).getExercise().getName());
-                nextExerciseTime.setText(calculateTimeText(exercises.get(exerciseIndex + 2).getExercise().getDuration()));
-            } else if (exercises.get(exerciseIndex).getExercise() == Exercises.REST) {
-                nextExerciseText.setText(exercises.get(exerciseIndex + 1).getExercise().getName());
-                nextExerciseTime.setText(calculateTimeText(exercises.get(exerciseIndex + 1).getExercise().getDuration()));
-            } else if (exercises.get(exerciseIndex).getExercise() == Exercises.RUN_IN_PLACE) {
-                nextExerciseText.setText("DONE");
-                nextExerciseTime.setText(StringUtils.EMPTY);
-
-            }
+            setNextExercises(exerciseIndex);
 
             startCountDown(exercises.get(exerciseIndex).getTime(), exerciseIndex);
         }
 
     }
 
-    private Drawable getDrawable(Exercise exercise) {
-        return getResources().getDrawable(R.drawable.heisman_circle_one, null);
-    }
-
-    private void setBG(Exercises exercises) {
-
-        if (getResources().getConfiguration().orientation == 1) {
-            switch (exercises) {
-            }
-
+    private void fixOrientation() {
+        int currentOrientation = getResources().getConfiguration().orientation;
+        if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+            requireNonNull(getActivity()).setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
         } else {
-            switch (exercises) {
-
-            }
+            requireNonNull(getActivity()).setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
         }
     }
 
-    public void startCountDown(long time, int exerciseIndex) {
+    private void setNextExercises(int exerciseIndex) {
+        if (exercises.get(exerciseIndex).getExercise() != Workout.REST && exercises.get(exerciseIndex).getExercise() != Workout.RUN_IN_PLACE) {
+            nextExerciseText.setText(exercises.get(exerciseIndex + 2).getExercise().getName());
+            nextExerciseTime.setText(calculateTimeText(exercises.get(exerciseIndex + 2).getExercise().getDuration()));
+        } else if (exercises.get(exerciseIndex).getExercise() == Workout.REST) {
+            nextExerciseText.setText(exercises.get(exerciseIndex + 1).getExercise().getName());
+            nextExerciseTime.setText(calculateTimeText(exercises.get(exerciseIndex + 1).getExercise().getDuration()));
+        } else if (exercises.get(exerciseIndex).getExercise() == Workout.RUN_IN_PLACE) {
+            nextExerciseText.setText("DONE");
+            nextExerciseTime.setText(StringUtils.EMPTY);
+        }
+    }
+
+    private void startCountDown(long time, int exerciseIndex) {
 
         mp.setOnCompletionListener(mp -> startWorkout(exerciseIndex + 1));
 
@@ -165,10 +143,10 @@ public class WorkoutFragment extends Fragment {
         String p1String = String.valueOf(p1);
 
         if (p3 < 10) {
-            p3String = "0" + String.valueOf(p3);
+            p3String = "0" + p3;
         }
         if (p1 < 10) {
-            p1String = "0" + String.valueOf(p1);
+            p1String = "0" + p1;
         }
 
         return p3String + ":" + p1String;
