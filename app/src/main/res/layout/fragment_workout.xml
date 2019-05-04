@@ -151,16 +151,6 @@
 
         </LinearLayout>
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="20dp"
-            android:backgroundTint="@color/colorPrimaryDark"
-            android:elevation="12dp"
-            android:src="@drawable/run"
-            android:translationZ="10dp" />
 
     </android.support.design.widget.CoordinatorLayout>
 
