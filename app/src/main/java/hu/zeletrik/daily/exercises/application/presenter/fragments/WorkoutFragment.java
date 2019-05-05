@@ -83,10 +83,10 @@ public class WorkoutFragment extends Fragment {
         if (exerciseIndex <= exercises.size() - 1) {
             progressBar.setProgress(0);
             exerciseImage.setImageDrawable(exercises.get(exerciseIndex).getIcon());
-            currentExerciseText.setText(exercises.get(exerciseIndex).getExercise().getName());
+            currentExerciseText.setText(exercises.get(exerciseIndex).getWorkout().getName());
             setNextExercises(exerciseIndex);
 
-            startCountDown(exercises.get(exerciseIndex).getTime(), exerciseIndex);
+            startCountDown(exercises.get(exerciseIndex).getCurrentDuration(), exerciseIndex);
         }
 
     }
@@ -101,13 +101,13 @@ public class WorkoutFragment extends Fragment {
     }
 
     private void setNextExercises(int exerciseIndex) {
-        if (exercises.get(exerciseIndex).getExercise() != Workout.REST && exercises.get(exerciseIndex).getExercise() != Workout.RUN_IN_PLACE) {
-            nextExerciseText.setText(exercises.get(exerciseIndex + 2).getExercise().getName());
-            nextExerciseTime.setText(calculateTimeText(exercises.get(exerciseIndex + 2).getExercise().getDuration()));
-        } else if (exercises.get(exerciseIndex).getExercise() == Workout.REST) {
-            nextExerciseText.setText(exercises.get(exerciseIndex + 1).getExercise().getName());
-            nextExerciseTime.setText(calculateTimeText(exercises.get(exerciseIndex + 1).getExercise().getDuration()));
-        } else if (exercises.get(exerciseIndex).getExercise() == Workout.RUN_IN_PLACE) {
+        if (exercises.get(exerciseIndex).getWorkout() != Workout.REST && exercises.get(exerciseIndex).getWorkout() != Workout.RUN_IN_PLACE) {
+            nextExerciseText.setText(exercises.get(exerciseIndex + 2).getWorkout().getName());
+            nextExerciseTime.setText(calculateTimeText(exercises.get(exerciseIndex + 2).getWorkout().getDuration()));
+        } else if (exercises.get(exerciseIndex).getWorkout() == Workout.REST) {
+            nextExerciseText.setText(exercises.get(exerciseIndex + 1).getWorkout().getName());
+            nextExerciseTime.setText(calculateTimeText(exercises.get(exerciseIndex + 1).getWorkout().getDuration()));
+        } else if (exercises.get(exerciseIndex).getWorkout() == Workout.RUN_IN_PLACE) {
             nextExerciseText.setText("DONE");
             nextExerciseTime.setText(StringUtils.EMPTY);
         }

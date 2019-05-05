@@ -37,9 +37,9 @@ public class ExercisesAdapter extends RecyclerView.Adapter<ExercisesAdapter.View
     public void onBindViewHolder(ViewHolder holder, int position) {
         String durationPlaceholder = context.getResources().getString(R.string.duration);
         Exercise exercise = mData.get(position);
-        holder.mTitle.setText(exercise.getExercise().getName());
-        holder.mDurationBasic.setText(String.format(durationPlaceholder, exercise.getExercise().getDuration()/1000));
-        holder.mDurationCurrent.setText(String.format(durationPlaceholder, exercise.getExercise().getDuration()/1000));
+        holder.mTitle.setText(exercise.getWorkout().getName());
+        holder.mDurationBasic.setText(String.format(durationPlaceholder, exercise.getWorkout().getDuration()/1000));
+        holder.mDurationCurrent.setText(String.format(durationPlaceholder, exercise.getWorkout().getDuration()/1000));
         holder.mImage.setImageDrawable(exercise.getIcon());
     }
 

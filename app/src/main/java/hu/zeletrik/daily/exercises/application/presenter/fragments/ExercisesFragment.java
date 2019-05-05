@@ -1,5 +1,6 @@
 package hu.zeletrik.daily.exercises.application.presenter.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,11 +15,13 @@ import java.util.List;
 import hu.zeletrik.daily.exercises.R;
 import hu.zeletrik.daily.exercises.application.adapter.ExercisesAdapter;
 import hu.zeletrik.daily.exercises.application.domain.Exercise;
+import hu.zeletrik.daily.exercises.application.presenter.ExerciseDetailActivity;
 import hu.zeletrik.daily.exercises.application.service.WorkoutService;
 import hu.zeletrik.daily.exercises.application.service.impl.WorkoutServiceImpl;
 
 public class ExercisesFragment extends Fragment implements ExercisesAdapter.ItemClickListener {
 
+    public static final String WORKOUT = "workout";
     private WorkoutService workoutService;
     private ExercisesAdapter adapter;
 
@@ -44,7 +47,10 @@ public class ExercisesFragment extends Fragment implements ExercisesAdapter.Item
 
     @Override
     public void onItemClick(View view, int position) {
-        Toast.makeText(getContext(), "You clicked " + adapter.getItem(position).getExercise().getName() + " on row number " + position, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "You clicked " + adapter.getItem(position).getWorkout().getName() + " on row number " + position, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getActivity(), ExerciseDetailActivity.class);
+        intent.putExtra(WORKOUT, adapter.getItem(position).getWorkout());
+        startActivity(intent);
 
     }
 }

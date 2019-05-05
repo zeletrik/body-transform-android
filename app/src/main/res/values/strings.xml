@@ -11,4 +11,9 @@
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="duration">%d sec</string>
+
+
+    <!-- Exercises details  -->
+    <string name="heisman_benefit"> The Heisman shuffle is a plyometric move that helps develop agility, balance and flexibility. This exercise gives you a great cardio boost and helps you improve your stamina, endurance and fitness level.</string>
+
 </resources>

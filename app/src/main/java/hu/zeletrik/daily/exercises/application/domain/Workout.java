@@ -8,7 +8,8 @@ public enum Workout {
     JUMP_JACK(60000L, "Jumping-Jack"),
     MOUNTAIN_CLIMBER(60000L, "Mountain Climbers"),
     LYING_HIP_RISE(90000L, "Lying Hip Rise"),
-    RUN_IN_PLACE(60000L, "Run in place");
+    RUN_IN_PLACE(60000L, "Run in place"),
+    OTHER(0L, "Not found");
 
     private final long duration;
     private final String name;

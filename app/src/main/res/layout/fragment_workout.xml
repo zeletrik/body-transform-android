@@ -66,7 +66,7 @@
             android:layout_alignBottom="@+id/progressBar"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-            android:contentDescription="Current exercise"
+            android:contentDescription="Current workout"
             app:layout_anchor="@+id/progressBar"
             app:layout_anchorGravity="center_horizontal|center_vertical"
             app:srcCompat="@drawable/wo_heisman" />
@@ -91,7 +91,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="Next exercise"
+                android:text="Next workout"
                 android:textAppearance="?android:attr/textAllCaps"
                 android:textSize="30sp"/>
 

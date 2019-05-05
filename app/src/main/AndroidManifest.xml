@@ -17,6 +17,7 @@
         </activity>
         <activity android:name="hu.zeletrik.daily.exercises.application.presenter.WorkoutActivity">
         </activity>
+        <activity android:name=".application.presenter.ExerciseDetailActivity" />
     </application>
 
 </manifest>
