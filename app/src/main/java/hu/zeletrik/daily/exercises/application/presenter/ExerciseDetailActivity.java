@@ -15,7 +15,6 @@ import hu.zeletrik.daily.exercises.application.domain.Workout;
 import hu.zeletrik.daily.exercises.application.service.WorkoutService;
 import hu.zeletrik.daily.exercises.application.service.impl.WorkoutServiceImpl;
 
-import static java.util.Objects.nonNull;
 import static java.util.Objects.requireNonNull;
 
 public class ExerciseDetailActivity extends AppCompatActivity {
@@ -59,8 +58,11 @@ public class ExerciseDetailActivity extends AppCompatActivity {
         ExerciseDetails exerciseDetails = workoutService.getExercisesDetailsFor(workout);
 
         getSupportActionBar().setTitle(exerciseDetails.getWorkout().getName());
-        mDurationBasic.setText(String.valueOf(exerciseDetails.getBaseDuration()));
-        mDurationCurrent.setText(String.valueOf(exerciseDetails.getCurrentDuration()));
+
+        mDurationBasic.setText(String.format(getString(R.string.duration_base), exerciseDetails.getBaseDuration() / 1000));
+        mDurationCurrent.setText(String.format(getString(R.string.duration_current), exerciseDetails.getCurrentDuration() / 1000));
+
+
         mImage.setImageDrawable(exerciseDetails.getIcon());
         mBenefits.setText(exerciseDetails.getBenefits());
         mInstruction.setText(exerciseDetails.getInstruction());

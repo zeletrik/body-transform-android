@@ -74,7 +74,10 @@ public class WorkoutServiceImpl implements WorkoutService {
             case REST:
             case BURPEE:
             case HEISMAN:
-                result = new ExerciseDetails(exercise, context.getResources().getString(R.string.heisman_benefit), StringUtils.EMPTY, StringUtils.EMPTY);
+                result = new ExerciseDetails(exercise,
+                        context.getResources().getString(R.string.heisman_benefit),
+                        context.getResources().getString(R.string.heisman_instruction),
+                        context.getResources().getString(R.string.heisman_muscle));
                 break;
             case JUMP_JACK:
             case MOUNTAIN_CLIMBER:
