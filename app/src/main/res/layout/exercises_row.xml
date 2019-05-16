@@ -29,7 +29,7 @@
             android:layout_marginStart="35dp"
             android:layout_marginTop="15dp"
             android:layout_toEndOf="@+id/exercisesRowPicture"
-            android:textSize="30sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
         <TextView
@@ -40,7 +40,7 @@
             android:layout_marginStart="35dp"
             android:layout_marginTop="5dp"
             android:layout_toEndOf="@+id/exercisesRowPicture"
-            android:textSize="20sp" />
+            android:textSize="16sp" />
 
         <View
             android:id="@+id/exercisesRowDurationDivider"
@@ -61,13 +61,13 @@
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
             android:layout_toEndOf="@+id/exercisesRowDurationDivider"
-            android:textSize="20sp" />
+            android:textSize="16sp" />
     </RelativeLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginStart="22dp"
-        android:layout_marginEnd="22dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:background="@color/gray" />
 </LinearLayout>
