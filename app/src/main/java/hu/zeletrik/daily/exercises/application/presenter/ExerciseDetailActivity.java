@@ -57,13 +57,13 @@ public class ExerciseDetailActivity extends AppCompatActivity {
 
         ExerciseDetails exerciseDetails = workoutService.getExercisesDetailsFor(workout);
 
-        getSupportActionBar().setTitle(exerciseDetails.getWorkout().getName());
+        getSupportActionBar().setTitle(exerciseDetails.getExercise().getWorkout().getName());
 
-        mDurationBasic.setText(String.format(getString(R.string.duration_base), exerciseDetails.getBaseDuration() / 1000));
-        mDurationCurrent.setText(String.format(getString(R.string.duration_current), exerciseDetails.getCurrentDuration() / 1000));
+        mDurationBasic.setText(String.format(getString(R.string.duration_base), exerciseDetails.getExercise().getBaseDuration() / 1000));
+        mDurationCurrent.setText(String.format(getString(R.string.duration_current), exerciseDetails.getExercise().getCurrentDuration() / 1000));
 
 
-        mImage.setImageDrawable(exerciseDetails.getIcon());
+        mImage.setImageDrawable(exerciseDetails.getExercise().getIcon());
         mBenefits.setText(exerciseDetails.getBenefits());
         mInstruction.setText(exerciseDetails.getInstruction());
         mMuscle.setText(exerciseDetails.getMuscle());

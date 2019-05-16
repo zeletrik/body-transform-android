@@ -31,68 +31,111 @@ public class WorkoutServiceImpl implements WorkoutService {
     @Override
     public List<Exercise> getWorkoutExercises() {
         return ImmutableList.of(
-                createExercisesFrom(Workout.WARM_UP),
-                createExercisesFrom(Workout.HEISMAN),
-                createExercisesFrom(Workout.REST),
-                createExercisesFrom(Workout.BURPEE),
-                createExercisesFrom(Workout.REST),
-                createExercisesFrom(Workout.JUMP_JACK),
-                createExercisesFrom(Workout.REST),
-                createExercisesFrom(Workout.MOUNTAIN_CLIMBER),
-                createExercisesFrom(Workout.REST),
-                createExercisesFrom(Workout.LYING_HIP_RISE),
-                createExercisesFrom(Workout.REST),
-                createExercisesFrom(Workout.RUN_IN_PLACE)
+                buildExercisesFrom(Workout.WARM_UP),
+                buildExercisesFrom(Workout.HEISMAN),
+                buildExercisesFrom(Workout.REST),
+                buildExercisesFrom(Workout.BURPEE),
+                buildExercisesFrom(Workout.REST),
+                buildExercisesFrom(Workout.JUMP_JACK),
+                buildExercisesFrom(Workout.REST),
+                buildExercisesFrom(Workout.MOUNTAIN_CLIMBER),
+                buildExercisesFrom(Workout.REST),
+                buildExercisesFrom(Workout.LYING_HIP_RISE),
+                buildExercisesFrom(Workout.REST),
+                buildExercisesFrom(Workout.RUN_IN_PLACE)
         );
     }
 
     @Override
     public List<Exercise> getBaseExercises() {
         return ImmutableList.of(
-                createExercisesFrom(Workout.REST),
-                createExercisesFrom(Workout.WARM_UP),
-                createExercisesFrom(Workout.HEISMAN),
-                createExercisesFrom(Workout.BURPEE),
-                createExercisesFrom(Workout.JUMP_JACK),
-                createExercisesFrom(Workout.MOUNTAIN_CLIMBER),
-                createExercisesFrom(Workout.LYING_HIP_RISE),
-                createExercisesFrom(Workout.RUN_IN_PLACE)
+                buildExercisesFrom(Workout.REST),
+                buildExercisesFrom(Workout.WARM_UP),
+                buildExercisesFrom(Workout.HEISMAN),
+                buildExercisesFrom(Workout.BURPEE),
+                buildExercisesFrom(Workout.JUMP_JACK),
+                buildExercisesFrom(Workout.MOUNTAIN_CLIMBER),
+                buildExercisesFrom(Workout.LYING_HIP_RISE),
+                buildExercisesFrom(Workout.RUN_IN_PLACE)
         );
     }
 
     @Override
     public ExerciseDetails getExercisesDetailsFor(Workout workout) {
-        ExerciseDetails result;
+        ExerciseDetails.ExerciseDetailsBuilder resultBuilder = ExerciseDetails.builder();
         Exercise exercise;
         if (nonNull(workout)) {
-            exercise = createExercisesFrom(workout);
+            exercise = buildExercisesFrom(workout);
         } else {
-            exercise = createExercisesFrom(Workout.OTHER);
+            exercise = buildExercisesFrom(Workout.OTHER);
         }
+        resultBuilder.exercise(exercise);
         switch (workout) {
             case WARM_UP:
+                resultBuilder
+                        .benefits(context.getResources().getString(R.string.warm_up__benefit))
+                        .instruction(context.getResources().getString(R.string.warm_up__instruction))
+                        .muscle(context.getResources().getString(R.string.warm_up__muscle));
+                break;
             case REST:
+                resultBuilder
+                        .benefits(context.getResources().getString(R.string.rest_benefit))
+                        .instruction(context.getResources().getString(R.string.rest_instruction))
+                        .muscle(context.getResources().getString(R.string.rest_muscle));
+                break;
             case BURPEE:
+                resultBuilder
+                        .benefits(context.getResources().getString(R.string.burpee_benefit))
+                        .instruction(context.getResources().getString(R.string.burpee_instruction))
+                        .muscle(context.getResources().getString(R.string.burpee_muscle));
+                break;
             case HEISMAN:
-                result = new ExerciseDetails(exercise,
-                        context.getResources().getString(R.string.heisman_benefit),
-                        context.getResources().getString(R.string.heisman_instruction),
-                        context.getResources().getString(R.string.heisman_muscle));
+                resultBuilder
+                        .benefits(context.getResources().getString(R.string.heisman_benefit))
+                        .instruction(context.getResources().getString(R.string.heisman_instruction))
+                        .muscle(context.getResources().getString(R.string.heisman_muscle));
                 break;
             case JUMP_JACK:
+                resultBuilder
+                        .benefits(context.getResources().getString(R.string.jumping_jack_benefit))
+                        .instruction(context.getResources().getString(R.string.jumping_jack_instruction))
+                        .muscle(context.getResources().getString(R.string.jumping_jack_muscle));
+                break;
             case MOUNTAIN_CLIMBER:
+                resultBuilder
+                        .benefits(context.getResources().getString(R.string.mountain_climber_benefit))
+                        .instruction(context.getResources().getString(R.string.mountain_climber_instruction))
+                        .muscle(context.getResources().getString(R.string.mountain_climber_muscle));
+                break;
             case LYING_HIP_RISE:
+                resultBuilder
+                        .benefits(context.getResources().getString(R.string.lying_hip_rise_benefit))
+                        .instruction(context.getResources().getString(R.string.lying_hip_rise_instruction))
+                        .muscle(context.getResources().getString(R.string.lying_hip_rise_muscle));
+                break;
             case RUN_IN_PLACE:
+                resultBuilder
+                        .benefits(context.getResources().getString(R.string.run_in_place_benefit))
+                        .instruction(context.getResources().getString(R.string.run_in_place_instruction))
+                        .muscle(context.getResources().getString(R.string.run_in_place_muscle));
+                break;
             default:
-                result = new ExerciseDetails(exercise, StringUtils.EMPTY, StringUtils.EMPTY, StringUtils.EMPTY);
+                resultBuilder
+                        .benefits(StringUtils.EMPTY)
+                        .instruction(StringUtils.EMPTY)
+                        .muscle(StringUtils.EMPTY);
                 break;
         }
-        return result;
+        return resultBuilder.build();
     }
 
-    private Exercise createExercisesFrom(Workout workout) {
-        // TODO: Current duration based on shared pref details
-        return new Exercise(workout, workout.getDuration(), workout.getDuration(), getDrawableFor(workout));
+    private Exercise buildExercisesFrom(Workout workout) {
+        return Exercise.builder()
+                .workout(workout)
+                .baseDuration(workout.getDuration())
+                .currentDuration(workout.getDuration()) // TODO: Current duration based on shared pref details
+                .icon(getDrawableFor(workout))
+                .build();
     }
 
     private Drawable getDrawableFor(Workout workout) {
