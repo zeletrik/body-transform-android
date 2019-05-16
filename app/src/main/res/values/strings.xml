@@ -1,13 +1,51 @@
 <resources>
     <string name="app_name">Daily Exercises</string>
 
-    <string-array name="workouts">
-    <item>Work Out #1</item>
-    <item>Work Out #2</item>
-    </string-array>
-
-
     <string name="action_settings">Settings</string>
-    <string name="drawer_open">Open navigation drawer</string>
-    <string name="drawer_close">Close navigation drawer</string>
+    <string name="duration">%d sec</string>
+    <string name="duration_base">Standard duration: %d sec</string>
+    <string name="duration_current">Current duration: %d sec</string>
+
+    <!-- Exercises details  -->
+    <string name="heisman_name">Heisman</string>
+    <string name="heisman_benefit">The Heisman shuffle is a plyometric move that helps develop agility, balance and flexibility. This exercise gives you a great cardio boost and helps you improve your stamina, endurance and fitness level.</string>
+    <string name="heisman_instruction">1. Stand tall with your feet hip width apart and with your knees slightly bent.\n2. Jump onto your right foot and pull your left knee up and toward your right shoulder.\n3. Jump onto your left foot and pull your right knee up and toward your left shoulder.\n4. Keep jumping between feet until set is complete.</string>
+    <string name="heisman_muscle">Glutes, quads, hamstrings</string>
+
+    <string name="rest_name">Rest</string>
+    <string name="rest_benefit">TBD</string>
+    <string name="rest_instruction">TBD</string>
+    <string name="rest_muscle">TBD</string>
+
+    <string name="warm_up_name">Warm up</string>
+    <string name="warm_up__benefit">TBD</string>
+    <string name="warm_up__instruction">TBD</string>
+    <string name="warm_up__muscle">TBD</string>
+
+    <string name="burpee_name"> Burpee</string>
+    <string name="burpee_benefit">TBD</string>
+    <string name="burpee_instruction">TBD</string>
+    <string name="burpee_muscle">TBD</string>
+
+    <string name="jumping_jack_name">Jumping jack</string>
+    <string name="jumping_jack_benefit">TBD</string>
+    <string name="jumping_jack_instruction">TBD</string>
+    <string name="jumping_jack_muscle">TBD</string>
+
+    <string name="mountain_climber_name">Mountain climber</string>
+    <string name="mountain_climber_benefit">TBD</string>
+    <string name="mountain_climber_instruction">TBD</string>
+    <string name="mountain_climber_muscle">TBD</string>
+
+    <string name="lying_hip_rise_name">Lying hip rise</string>
+    <string name="lying_hip_rise_benefit">TBD</string>
+    <string name="lying_hip_rise_instruction">TBD</string>
+    <string name="lying_hip_rise_muscle">TBD</string>
+
+    <string name="run_in_place_name">Run in place</string>
+    <string name="run_in_place_benefit">TBD</string>
+    <string name="run_in_place_instruction">TBD</string>
+    <string name="run_in_place_muscle">TBD</string>
+
+    <string name="not_found_name">No exercises found</string>
 </resources>

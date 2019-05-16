@@ -18,7 +18,6 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="63dp">
 
-
         <TextView
             android:id="@+id/currentExercise"
             android:layout_width="wrap_content"
@@ -27,7 +26,7 @@
             android:text="Current task"
             android:textStyle="bold"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="50sp" />
+            android:textSize="35sp" />
 
         <TextView
             android:id="@+id/txtProgress"
@@ -40,7 +39,7 @@
             android:paddingTop="50dp"
             android:text="00:00"
             android:textColor="@color/colorPrimaryLight"
-            android:textSize="40sp"
+            android:textSize="28sp"
             android:textStyle="bold"
             android:translationZ="@android:dimen/app_icon_size"
             app:layout_anchor="@id/currentExercise"
@@ -62,14 +61,14 @@
         <ImageView
             android:id="@+id/exerciseImage"
             android:layout_width="wrap_content"
-            android:layout_height="300dp"
+            android:layout_height="250dp"
             android:layout_alignBottom="@+id/progressBar"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-            android:contentDescription="Current exercise"
+            android:contentDescription="Current workout"
             app:layout_anchor="@+id/progressBar"
             app:layout_anchorGravity="center_horizontal|center_vertical"
-            app:srcCompat="@drawable/heisman_circle_one" />
+            app:srcCompat="@drawable/wo_heisman" />
 
         <LinearLayout
             android:orientation="vertical"
@@ -77,7 +76,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="5dp"
-            android:layout_marginBottom="28dp"
+            android:layout_marginBottom="16dp"
             android:layout_gravity="bottom" >
 
             <View
@@ -91,17 +90,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="Next exercise"
+                android:text="Next workout"
                 android:textAppearance="?android:attr/textAllCaps"
-                android:textSize="30sp"/>
+                android:textSize="20sp"/>
 
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:clipToPadding="false"
-                android:paddingLeft="40dp"
-                android:paddingTop="13dp"
-                android:paddingRight="40dp"
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp"
+                android:paddingTop="10dp"
                 android:paddingBottom="10dp">
 
                 <RelativeLayout
@@ -117,11 +116,11 @@
 
                     <ImageView
                         android:id="@+id/pic"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/heisman_circle_one"
-                        android:paddingStart="15dp" />
+                        android:src="@drawable/wo_heisman"
+                        android:paddingStart="15dp"/>
 
                     <TextView
                         android:id="@+id/nextExercise"
@@ -129,10 +128,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="30dp"
                         android:layout_marginTop="15dp"
-                        android:layout_toRightOf="@+id/pic"
+                        android:layout_toEndOf="@+id/pic"
                         android:textColor="@color/colorPrimaryDark"
                         android:text="TEST"
-                        android:textSize="30dp"
+                        android:textSize="26sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -142,10 +141,10 @@
                         android:layout_below="@+id/nextExercise"
                         android:layout_marginStart="30dp"
                         android:layout_marginTop="5dp"
-                        android:layout_toRightOf="@+id/pic"
+                        android:layout_toEndOf="@+id/pic"
                         android:textColor="@color/colorPrimaryDark"
                         android:text="TEST"
-                        android:textSize="25dp" />
+                        android:textSize="24sp" />
                 </RelativeLayout>
             </LinearLayout>
 

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:clipToPadding="false"
+    android:paddingBottom="10dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:elevation="4dp"
+        android:translationZ="1.5dp">
+
+        <ImageView
+            android:id="@+id/exercisesRowPicture"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="end"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="16dp"/>
+
+        <TextView
+            android:id="@+id/exercisesRowTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="15dp"
+            android:layout_toEndOf="@+id/exercisesRowPicture"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/exercisesRowDurationBase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/exercisesRowTitle"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/exercisesRowPicture"
+            android:textSize="16sp" />
+
+        <View
+            android:id="@+id/exercisesRowDurationDivider"
+            android:layout_width="3dp"
+            android:layout_height="3dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginEnd="22dp"
+            android:layout_below="@+id/exercisesRowTitle"
+            android:layout_toEndOf="@+id/exercisesRowDurationBase"
+            android:background="@drawable/circle_divider"/>
+
+        <TextView
+            android:id="@+id/exercisesRowDurationCurrent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/exercisesRowTitle"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/exercisesRowDurationDivider"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/gray" />
+</LinearLayout>
