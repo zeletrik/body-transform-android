@@ -2,6 +2,7 @@ package hu.zeletrik.daily.exercises.application.presenter.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,9 +23,10 @@ import hu.zeletrik.daily.exercises.application.service.impl.WorkoutServiceImpl;
 
 public class ExercisesFragment extends Fragment implements ExercisesAdapter.ItemClickListener {
 
-    public static final String WORKOUT = "workout";
+    private static final String WORKOUT = "workout";
     private WorkoutService workoutService;
     private ExercisesAdapter adapter;
+    private RecyclerView recyclerView;
 
     public ExercisesFragment() {
     }
@@ -32,12 +34,10 @@ public class ExercisesFragment extends Fragment implements ExercisesAdapter.Item
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         workoutService = new WorkoutServiceImpl(getContext());
-
         View rootView = inflater.inflate(R.layout.fragment_exercises, container, false);
-
         List<Exercise> exerciseList = workoutService.getBaseExercises();
 
-        RecyclerView recyclerView = rootView.findViewById(R.id.exerciseList);
+        recyclerView = rootView.findViewById(R.id.exerciseList);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new ExercisesAdapter(getContext(), exerciseList);
         adapter.setClickListener(this);
